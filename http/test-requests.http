@@ -1,0 +1,35 @@
+### Create order
+POST {{host}}/v1/orders
+Content-Type: application/json
+
+{
+  "customerId": "0abb41bb-ccaa-4754-bdcd-1df7caf03e5f",
+  "ticker": "SAVE",
+  "orderSide" : "BUY",
+  "volume": 100,
+  "price": {
+    "price": 100,
+    "currency": "SEK"
+  }
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 201, "Response status is not 201");
+    });
+    client.global.set("orderId", response.body.orderId);
+    client.log("orderid is set to:\n" + client.global.get("orderId"));
+%}
+
+### Get order
+GET {{host}}/v1/orders/0abb41bb-ccaa-4754-bdcd-0df7caf03e5f
+Content-Type: application/json
+
+### Get by date, ticker and order side
+GET {{host}}/v1/summary/?ticker=SAVE
+Content-Type: application/json
+
+
+### Get by date, ticker and order side
+GET {{host}}/v1/instrumentList
+Content-Type: application/json

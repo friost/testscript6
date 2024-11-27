@@ -1,0 +1,5 @@
+Here you can place database migration files if you want to setup a database table for your application.
+
+The application is setup to use Flyway for database migrations. The migrations are run automatically when the application starts.
+
+If you are not familiar with it you can read more about it online.
